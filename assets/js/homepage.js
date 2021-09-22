@@ -79,6 +79,7 @@ var formSubmitHandler = function(event) {
 
     if (username) {
         getUserRepos(username);
+        repoContainerEl.textContent = "";
         nameInputEl.value = '';
     } else {
         alert("Please enter a GitHub username");
@@ -104,5 +105,6 @@ var getUserRepos = function(user) {
         alert("Unable to connect to GitHub");
     });
 };
+
 userFormEl.addEventListener("submit", formSubmitHandler);
 languageButtonsEl.addEventListener("click", buttonClickHandler);

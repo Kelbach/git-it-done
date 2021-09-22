@@ -27,7 +27,12 @@ var displayWarning = function(repo) {
 };
 
 var displayIssues = function(issues) {
-    for (var i = 0; i < issues.length; i++) {
+        if (issues.length === 0) {
+            issueContainerEl.textContent = "This repo has no open issues.";
+            return;
+        }
+
+        for (var i = 0; i < issues.length; i++) {
         //create link element to issues
         var issueEl = document.createElement("a");
         issueEl.classList = "list-item flex-row justify-space-between align-center";
@@ -44,11 +49,6 @@ var displayIssues = function(issues) {
             typeEl.textContent = "(Pull request)";
         } else {
             typeEl.textContent = "(Issue)";
-        }
-
-        if (issues.length === 0) {
-            issueContainerEl.textContent = "This repo has no open issues.";
-            return;
         }
 
         issueEl.appendChild(typeEl);
